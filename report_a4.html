@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MINI PROJECT - Mall Customer Segmentation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Fira+Code:wght@400;500&display=swap');
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: #f5f5f5;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+    color: #111;
+    font-size: 10.5pt;
+    line-height: 1.35;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto 10mm auto;
+    background: #fff;
+    padding: 12mm 14mm 12mm 14mm;
+    position: relative;
+    page-break-after: always;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  @media print {
+    body {
+      background: none;
+    }
+    .page {
+      margin: 0;
+      box-shadow: none;
+    }
+  }
+
+  .page-border {
+    position: absolute;
+    top: 8mm;
+    left: 8mm;
+    right: 8mm;
+    bottom: 8mm;
+    border: 1px solid #222;
+    pointer-events: none;
+  }
+
+  /* Header Box */
+  .header-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 12px;
+    border: 1px solid #111;
+  }
+  .header-table td {
+    border: 1px solid #111;
+    padding: 6px 10px;
+    vertical-align: middle;
+  }
+  .header-table .ex-cell {
+    width: 28%;
+    font-weight: 700;
+    font-size: 9.5pt;
+  }
+  .header-table .title-cell {
+    width: 72%;
+    text-align: center;
+    font-weight: 700;
+    font-size: 11pt;
+    letter-spacing: 0.5px;
+  }
+
+  h3 {
+    font-size: 10.5pt;
+    font-weight: 700;
+    color: #000;
+    margin-top: 8px;
+    margin-bottom: 3px;
+  }
+
+  h4 {
+    font-size: 9.8pt;
+    font-weight: 700;
+    margin-top: 5px;
+    margin-bottom: 2px;
+  }
+
+  p {
+    margin-bottom: 5px;
+    text-align: justify;
+  }
+
+  ul, ol {
+    margin-left: 18px;
+    margin-bottom: 6px;
+  }
+
+  li {
+    margin-bottom: 2.5px;
+    text-align: justify;
+    font-size: 9.8pt;
+  }
+
+  .code-block {
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px 10px;
+    font-family: 'Fira Code', Consolas, Monaco, monospace;
+    font-size: 8.5pt;
+    line-height: 1.35;
+    color: #222;
+    margin: 6px 0;
+    white-space: pre;
+  }
+
+  .code-keyword { color: #0000ff; font-weight: bold; }
+  .code-string { color: #a31515; }
+  .code-comment { color: #008000; font-style: italic; }
+  .code-func { color: #795e26; }
+
+  .highlight-box {
+    background: #f8fafc;
+    border-left: 3px solid #6366f1;
+    padding: 4px 8px;
+    margin: 4px 0;
+    font-size: 9.5pt;
+  }
+
+  .screenshot-container {
+    margin-top: 6px;
+    margin-bottom: 8px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #f8fafc;
+  }
+
+  .screenshot-title {
+    background: #0f172a;
+    color: #fff;
+    font-size: 8pt;
+    font-weight: 700;
+    padding: 3px 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .app-preview-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 8px 10px;
+    margin-bottom: 8px;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .stat-pill {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 8.5pt;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 7.5pt;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1 ================= -->
+<div class="page">
+  <div class="page-border"></div>
+
+  <table class="header-table">
+    <tr>
+      <td class="ex-cell">EX.NO: 12<br>DATE:</td>
+      <td class="title-cell">MINI PROJECT - Mall Customer Segmentation</td>
+    </tr>
+  </table>
+
+  <h3>Aim:</h3>
+  <p>To develop a machine learning-based <strong>Mall Customer Segmentation System</strong> that analyzes customer demographic and spending parameters to identify different customer behavioral clusters using unsupervised learning and Retrieval-Augmented Generation (RAG).</p>
+
+  <h3>Define:</h3>
+  <p>The problem is to develop a machine learning application that uses customer-related parameters such as Age, Gender, Annual Income, and Spending Score to identify distinct customer personas. The system should also use Retrieval-Augmented Generation (RAG) to provide understandable contextual retail insights, personalized promotion recommendations, and customer retention strategies.</p>
+
+  <h3>Problem Statement</h3>
+  <div class="highlight-box">
+    <em>"How might we develop a machine learning application that uses customer demographic and spending parameters to identify distinct customer behavioral segments and provide an understandable, actionable retail promotion strategy to store managers using Machine Learning and RAG?"</em>
+  </div>
+
+  <h3>Existing Problems</h3>
+  <ul>
+    <li>Manual categorization of high-volume customer transaction records is tedious and time-consuming.</li>
+    <li>Multiple customer attributes such as Age, Annual Income, and Spending Score are difficult to correlate manually. Subtle behavioral spending clusters are not obvious from individual variables.</li>
+    <li>One-size-fits-all generic discount campaigns result in low customer conversion and marketing budget waste.</li>
+    <li>Different income groups possess contrasting shopping motivations (e.g., budget-conscious vs. trendsetters vs. luxury buyers).</li>
+    <li>A standalone machine learning cluster output (e.g., Cluster 0, 1, 2) does not explain the domain-specific promotional strategy or customer retention roadmap.</li>
+  </ul>
+
+  <h3>Objective</h3>
+  <ol>
+    <li>Collect customer demographic and spending parameters from a public benchmark dataset.</li>
+    <li>Preprocess and prepare the customer dataset (handling missing values, encoding, and scaling).</li>
+    <li>Train suitable unsupervised machine learning clustering models (K-Means, Agglomerative, DBSCAN).</li>
+    <li>Identify optimal customer segments using the Elbow Method (WCSS) and Silhouette Score.</li>
+    <li>Compare clustering algorithms using validation metrics (Silhouette, Davies-Bouldin Index).</li>
+    <li>Predict the customer segment and shopping persona of a new customer record.</li>
+    <li>Use RAG to retrieve relevant retail marketing, customer loyalty, and promotion knowledge.</li>
+    <li>Provide an understandable AI-generated explanation of the predicted customer persona.</li>
+    <li>Develop a web application for dataset upload, clustering studio, prediction, and RAG analysis.</li>
+  </ol>
+
+  <h3>Empathy:</h3>
+  <p>The empathy phase focuses on understanding the difficulties faced by retail store managers and marketing teams when analyzing customer spending habits and designing targeted marketing campaigns.</p>
+
+  <h4>Problem Understanding</h4>
+  <p>Shoppers generate diverse parameters including age, annual income, and in-store spending frequency. It can be difficult for a store manager to determine whether a customer requires luxury VIP white-glove treatment, Buy-Now-Pay-Later (BNPL) schemes, or family dining vouchers by looking at raw transaction tables manually.</p>
+
+  <h4>User Needs</h4>
+  <ul>
+    <li>A simple way to upload customer transaction and demographic data (CSV / JSON).</li>
+    <li>A quick customer segment and persona prediction for new shoppers.</li>
+    <li>Clear cluster profiling (Income range, spending tier, demographic ratios).</li>
+    <li>Clustering model performance information (Silhouette Score, Elbow Curve).</li>
+    <li>Identification of primary spending drivers and cluster centroids.</li>
+    <li>An understandable explanation of the predicted customer segment.</li>
+    <li>Targeted marketing campaign and promotional recommendations using RAG.</li>
+  </ul>
+</div>
+
+<!-- ================= PAGE 2 ================= -->
+<div class="page">
+  <div class="page-border"></div>
+
+  <h3>Ideate:</h3>
+  <p>During the Ideate phase, possible solutions are considered and converted into a practical machine learning and RAG prototype.</p>
+  <ol>
+    <li>Develop an unsupervised machine learning model for customer behavioral segmentation.</li>
+    <li>Use a publicly available benchmark dataset (Kaggle Mall Customer Segmentation Data).</li>
+    <li>Allow users to upload CSV or JSON customer demographic and spending datasets.</li>
+    <li>Apply data cleaning, validation, and feature distribution profiling.</li>
+    <li>Handle missing values, encode gender, and normalize numerical features where required.</li>
+    <li>Compare suitable clustering algorithms (K-Means, Agglomerative Hierarchical, and DBSCAN).</li>
+    <li>Evaluate clustering quality using Silhouette Score, Davies-Bouldin Index, and Calinski-Harabasz Index.</li>
+    <li>Determine optimal number of clusters ($K=5$) via the Elbow Method (Inertia minimization).</li>
+    <li>Develop a RAG knowledge base containing information about retail marketing, VIP concierge, customer retention, BNPL promotions, and discount optimization.</li>
+    <li>Synthesize personalized promotional offers and channel recommendations grounded in RAG.</li>
+  </ol>
+
+  <h3>Prototype:</h3>
+  <p>The proposed prototype is a <strong>Mall Customer Segmentation & RAG Marketing Dashboard</strong> developed using Python/TypeScript, Machine Learning, RAG, and a web-based frontend and backend.</p>
+  <p>The user uploads a customer dataset. The system analyzes available features, preprocesses the parameters, trains clustering models, evaluates cluster separation metrics, and classifies customer personas.</p>
+
+  <h4>1. Dataset Upload & Profile:</h4>
+  <p>Allows the user to upload a CSV or JSON customer dataset and displays feature statistics.</p>
+
+  <h4>2. Customer Segment Prediction:</h4>
+  <p>Uses the trained clustering model to predict the customer persona for input demographics.</p>
+
+  <h4>3. Result Summary:</h4>
+  <p>Displays 2D scatter plots (Income vs. Spending), centroid coordinates, and cluster distributions.</p>
+
+  <h4>4. Model and RAG Insights:</h4>
+  <p>Displays Silhouette evaluation metrics and retrieves relevant retail marketing knowledge using RAG to explain the predicted persona and recommend targeted campaigns.</p>
+
+  <h3>Code:</h3>
+  <div class="code-block"><span class="code-keyword">import</span> pandas <span class="code-keyword">as</span> pd
+<span class="code-keyword">import</span> numpy <span class="code-keyword">as</span> np
+<span class="code-keyword">from</span> sklearn.cluster <span class="code-keyword">import</span> KMeans
+<span class="code-keyword">from</span> sklearn.metrics <span class="code-keyword">import</span> silhouette_score, davies_bouldin_score
+
+<span class="code-comment"># Load dataset</span>
+data = pd.<span class="code-func">read_csv</span>(<span class="code-string">"Mall_Customers.csv"</span>)
+
+<span class="code-comment"># Select features for 2D Clustering</span>
+X = data[[<span class="code-string">"Annual Income (k$)"</span>, <span class="code-string">"Spending Score (1-100)"</span>]].values
+
+<span class="code-comment"># Determine optimal K using Elbow Method (WCSS)</span>
+wcss = []
+<span class="code-keyword">for</span> k <span class="code-keyword">in</span> <span class="code-func">range</span>(1, 11):
+    kmeans = <span class="code-func">KMeans</span>(n_clusters=k, init=<span class="code-string">'k-means++'</span>, max_iter=300, random_state=42)
+    kmeans.<span class="code-func">fit</span>(X)
+    wcss.<span class="code-func">append</span>(kmeans.inertia_)
+
+<span class="code-comment"># Train final model with optimal K=5</span>
+model = <span class="code-func">KMeans</span>(n_clusters=5, init=<span class="code-string">'k-means++'</span>, max_iter=300, random_state=42)
+data[<span class="code-string">"Cluster"</span>] = model.<span class="code-func">fit_predict</span>(X)</div>
+</div>
+
+<!-- ================= PAGE 3 ================= -->
+<div class="page">
+  <div class="page-border"></div>
+
+  <div class="code-block"><span class="code-comment"># Model Evaluation</span>
+sil_score = <span class="code-func">silhouette_score</span>(X, data[<span class="code-string">"Cluster"</span>])
+db_score = <span class="code-func">davies_bouldin_score</span>(X, data[<span class="code-string">"Cluster"</span>])
+
+<span class="code-func">print</span>(<span class="code-string">"Optimal Clusters (K):"</span>, 5)
+<span class="code-func">print</span>(<span class="code-string">"Silhouette Score:"</span>, <span class="code-func">round</span>(sil_score, 4))
+<span class="code-func">print</span>(<span class="code-string">"Davies-Bouldin Index:"</span>, <span class="code-func">round</span>(db_score, 4))
+<span class="code-func">print</span>(<span class="code-string">"Inertia (WCSS):"</span>, <span class="code-func">round</span>(model.inertia_, 2))
+<span class="code-func">print</span>(<span class="code-string">"Cluster Centroids:\n"</span>, model.cluster_centers_)
+
+<span class="code-comment"># Single customer prediction (e.g., Annual Income=$85k, Spending Score=80)</span>
+new_shopper = np.<span class="code-func">array</span>([[85, 80]])
+predicted_cluster = model.<span class="code-func">predict</span>(new_shopper)[0]
+<span class="code-func">print</span>(<span class="code-string">"Assigned Cluster:"</span>, predicted_cluster)</div>
+
+  <h3>Important:</h3>
+  <ul>
+    <li>The application does not assume pre-labeled target classes; it discovers natural clusters.</li>
+    <li>The application inspects feature distributions and allows custom feature selection.</li>
+    <li>The RAG component is strictly decoupled from the mathematical clustering engine.</li>
+  </ul>
+
+  <div class="highlight-box" style="margin: 6px 0;">
+    <strong>Machine Learning</strong> = predicts customer cluster & calculates centroid distances.<br>
+    <strong>RAG</strong> = explains the predicted persona using retrieved retail marketing knowledge.
+  </div>
+
+  <h3>Dataset</h3>
+  <p><strong>Primary demonstration dataset:</strong> Mall Customer Segmentation Dataset<br>
+  <strong>Kaggle:</strong> <code>https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python</code></p>
+  <p>The dataset contains customer records including CustomerID, Gender, Age, Annual Income (k$), and Spending Score (1-100). It contains 200 customer records. Spending Score is assigned based on mall spending frequency and basket size. Do not invent model accuracy or cluster scores; only display empirical metrics after training.</p>
+
+  <h3>RAG Requirement</h3>
+  <p>The project <strong>MUST use RAG</strong>. The knowledge base contains information related to retail marketing, customer lifetime value (LTV), luxury VIP retention, Buy-Now-Pay-Later (BNPL) schemes, student trendsetter campaigns, family weekend dining bundles, clearance discount playbooks, and loyalty reward tiers.</p>
+  <div class="highlight-box" style="font-size: 8.5pt;">
+    <strong>Workflow:</strong> User Input &rarr; Machine Learning Model &rarr; Customer Segment ID &rarr; Retrieve Relevant Retail Knowledge &rarr; RAG Context &rarr; AI-Generated Marketing Strategy
+  </div>
+  <p><em>RAG must NOT replace the ML model. The ML model determines the cluster. RAG provides supporting business context, promotional copy, and conversion channels.</em></p>
+
+  <h3>Dataset Upload Requirement</h3>
+  <ol>
+    <li>Read the uploaded customer dataset.</li>
+    <li>Display the number of rows and columns.</li>
+    <li>Display available feature columns.</li>
+    <li>Identify numerical and categorical features.</li>
+    <li>Detect feature summary statistics (mean, min, max, std).</li>
+    <li>Handle missing values and duplicates.</li>
+    <li>Encode categorical attributes (Gender).</li>
+    <li>Scale numerical features when required.</li>
+    <li>Compute the Elbow curve for $K=1$ to $10$.</li>
+    <li>Train multiple clustering models (K-Means, Agglomerative, DBSCAN).</li>
+    <li>Compare model performance using Silhouette Scores.</li>
+    <li>Generate customer segment and persona predictions.</li>
+    <li>Display 2D scatter plots with centroid markers.</li>
+    <li>Send the prediction context to the RAG pipeline.</li>
+    <li>Retrieve relevant retail knowledge and display the final marketing campaign.</li>
+  </ol>
+</div>
+
+<!-- ================= PAGE 4 ================= -->
+<div class="page">
+  <div class="page-border"></div>
+
+  <h3>App:</h3>
+
+  <!-- Screenshot 1: Overview Dashboard -->
+  <div class="screenshot-container">
+    <div class="screenshot-title">
+      <span>MALL CUSTOMER INTELLIGENCE / OVERVIEW DASHBOARD</span>
+      <span>K-Means K=5 | Silhouette 0.554</span>
+    </div>
+    <div style="padding: 6px; background: #0f172a; color: #fff;">
+      <div style="font-size: 11pt; font-weight: 800; color: #f8fafc;">Know who is shopping before they leave the mall.</div>
+      <div style="font-size: 7.5pt; color: #cbd5e1; margin-top: 1px;">Customer segmentation workspace fusing unsupervised machine learning with Retrieval-Augmented Generation (RAG).</div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 6px;">
+        <div style="background: rgba(255,255,255,0.1); padding: 4px 6px; border-radius: 4px;">
+          <div style="font-size: 6.5pt; color: #94a3b8; text-transform: uppercase;">Total Customers</div>
+          <div style="font-size: 10pt; font-weight: 700; color: #fff;">200 Records</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.1); padding: 4px 6px; border-radius: 4px;">
+          <div style="font-size: 6.5pt; color: #94a3b8; text-transform: uppercase;">Optimal Clusters</div>
+          <div style="font-size: 10pt; font-weight: 700; color: #a855f7;">K = 5</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.1); padding: 4px 6px; border-radius: 4px;">
+          <div style="font-size: 6.5pt; color: #94a3b8; text-transform: uppercase;">Silhouette Score</div>
+          <div style="font-size: 10pt; font-weight: 700; color: #10b981;">0.554</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.1); padding: 4px 6px; border-radius: 4px;">
+          <div style="font-size: 6.5pt; color: #94a3b8; text-transform: uppercase;">VIP Elite Ratio</div>
+          <div style="font-size: 10pt; font-weight: 700; color: #ec4899;">19.5%</div>
+        </div>
+      </div>
+    </div>
+    <div style="padding: 6px 10px; background: #fff; border-top: 1px solid #e2e8f0; font-size: 7.5pt; display: flex; justify-content: space-between;">
+      <span><strong>5 Identified Segments:</strong> VIP Elite &bull; Trendsetters &bull; Mainstream &bull; Careful Spenders &bull; Budget-Conscious</span>
+      <span style="color: #6366f1; font-weight: 700;">Scatter Plot: Annual Income vs. Spending Score</span>
+    </div>
+  </div>
+
+  <!-- Screenshot 2: Dataset Profile & Clustering Studio -->
+  <div class="screenshot-container">
+    <div class="screenshot-title">
+      <span>DATASET PROFILE & LIVE RAG MARKETING ENGINE</span>
+      <span>Grounding Guarantee Verified</span>
+    </div>
+    <div style="padding: 6px 8px; background: #fff;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 7.5pt;">
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 5px; border-radius: 4px;">
+          <strong style="color: #0f172a;">Ingestion & Profile Signals:</strong><br>
+          &bull; 200 Samples | 5 Features | 0 Missing Values<br>
+          &bull; Annual Income: Mean $60.5k (Range $15k - $137k)<br>
+          &bull; Spending Score: Mean 50.2 (Range 1 - 99)<br>
+          &bull; Gender Split: 56% Female, 44% Male
+        </div>
+        <div style="background: #faf5ff; border: 1px solid #e9d5ff; padding: 5px; border-radius: 4px;">
+          <strong style="color: #6b21a8;">RAG Synthesized Action Plan:</strong><br>
+          &bull; <strong>VIP Elite (Cluster 5):</strong> Luxury concierge & VIP lounge<br>
+          &bull; <strong>Trendsetters (Cluster 2):</strong> BNPL checkout & TikTok drops<br>
+          &bull; <strong>Mainstream (Cluster 3):</strong> Tiered family weekend rewards<br>
+          &bull; <strong>Budget (Cluster 1):</strong> BOGO clearance & essential packs
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Result:</h3>
+  <p>The <strong>Mall Customer Segmentation System</strong> was developed using Machine Learning and Retrieval-Augmented Generation. The system accepts customer demographic and transaction data, preprocesses the available parameters, trains unsupervised clustering models, evaluates their separation performance, and identifies the customer behavioral persona. The Machine Learning component performs the mathematical clustering ($K=5$, Silhouette Score = $0.554$, Inertia = $44,448$). The RAG component retrieves domain-specific retail marketing knowledge and provides contextual, actionable promotional strategies and channel suggestions.</p>
+  <p>The system analyzes parameters such as Gender, Age, Annual Income, and Spending Score. The application provides: Dataset analysis, Data preprocessing, Customer segment prediction, Model comparison, Silhouette Score, Davies-Bouldin Index, Inertia (WCSS), Cluster centroid analysis, 2D scatter visualizations, RAG-based marketing campaign synthesis, and AI-based retail strategy recommendations.</p>
+</div>
+
+</body>
+</html>
