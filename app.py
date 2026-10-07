@@ -206,6 +206,43 @@ with st.sidebar:
         ]
     )
     st.divider()
+    st.markdown("### 📥 Download PDF Reports")
+    
+    # Download Lab Report PDF
+    report_pdf_path = "MALL_CUSTOMER_SEGMENTATION_REPORT.pdf"
+    if os.path.exists(report_pdf_path):
+        with open(report_pdf_path, "rb") as f:
+            st.download_button(
+                label="📄 Download Lab Report (PDF)",
+                data=f,
+                file_name="MALL_CUSTOMER_SEGMENTATION_REPORT.pdf",
+                mime="application/pdf",
+                use_container_width=True
+            )
+
+    # Download Study Guide PDF
+    study_pdf_path = "MALL_CUSTOMER_SEGMENTATION_STUDY_GUIDE.pdf"
+    if os.path.exists(study_pdf_path):
+        with open(study_pdf_path, "rb") as f:
+            st.download_button(
+                label="📚 Download Study Guide (PDF)",
+                data=f,
+                file_name="MALL_CUSTOMER_SEGMENTATION_STUDY_GUIDE.pdf",
+                mime="application/pdf",
+                use_container_width=True
+            )
+
+    # Download Dataset CSV
+    if os.path.exists("Mall_Customers.csv"):
+        with open("Mall_Customers.csv", "rb") as f:
+            st.download_button(
+                label="📊 Download Dataset (CSV)",
+                data=f,
+                file_name="Mall_Customers.csv",
+                mime="text/csv",
+                use_container_width=True
+            )
+
     st.caption("✨ Machine Learning Mini Project • Streamlit Cloud Ready")
 
 # ---------------------------------------------------------
